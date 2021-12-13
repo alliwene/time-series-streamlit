@@ -92,6 +92,7 @@ def main():
         x=1
     ))
     # remove duplicate legends in plot 
+    # https://stackoverflow.com/questions/26939121/how-to-avoid-duplicate-legend-labels-in-plotly-or-pass-custom-legend-labels/62162555#62162555
     names = set()
     fig.for_each_trace(
         lambda trace:
