@@ -56,7 +56,7 @@ def main():
                     vertical_spacing=0.05)
 
     for i, col in enumerate(df.columns):
-        fig.add_trace(go.Scatter(x=df.index, y=df[col],  
+        fig.add_trace(go.Scatter(name="actual", x=df.index, y=df[col],  
                                 marker = dict(size = 10, 
                                             color = 'blue'),
                                 textfont=dict(
@@ -64,10 +64,10 @@ def main():
                                     size=18,  
                                     family='Times New Roman')),
                     row=i+1, col=1)
-        fig.add_trace(go.Scatter(x=yhat_df.index, y=yhat_df[col],  
+        fig.add_trace(go.Scatter(name="predicted", x=yhat_df.index, y=yhat_df[col],  
                                 marker = dict(size = 10, 
                                             color = 'red')),
-                    row=i+1, col=1)
+                    row=i+1, col=1) 
         
     fig.update_xaxes(
         rangeselector=dict(
@@ -80,10 +80,23 @@ def main():
             ])
         )
     )
-    fig.update_layout(showlegend=False, autosize=False,
+    fig.update_layout(autosize=False,
         width=1300,
         height=1500,
         )
+    fig.update_layout(legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=1.02,
+        xanchor="right",
+        x=1
+    ))
+    # remove duplicate legends in plot 
+    names = set()
+    fig.for_each_trace(
+        lambda trace:
+            trace.update(showlegend=False)
+            if (trace.name in names) else names.add(trace.name))
     
     if page == 'Forecast Data':
         st.markdown("## Forecast Data")
