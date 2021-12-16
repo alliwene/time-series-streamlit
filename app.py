@@ -64,7 +64,7 @@ def main():
                                     size=18,  
                                     family='Times New Roman')),
                     row=i+1, col=1)
-        fig.add_trace(go.Scatter(name="predicted", x=yhat_df.index, y=yhat_df[col],  
+        fig.add_trace(go.Scatter(name="forecast", x=yhat_df.index, y=yhat_df[col],  
                                 marker = dict(size = 10, 
                                             color = 'red')),
                     row=i+1, col=1) 
