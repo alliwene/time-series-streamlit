@@ -19,8 +19,8 @@ def main():
     st.title('Predict Time Series Data')
     
     # load dataframe
-    df = pd.read_csv('datasets/throughput_metrics.csv', parse_dates=['Time'], index_col='Time')
-    df_print = pd.read_csv('datasets/throughput_metrics.csv', parse_dates=['Time'])
+    df = pd.read_csv('datasets/throughput.csv', parse_dates=['Time'], index_col='Time')
+    df_print = pd.read_csv('datasets/throughput.csv', parse_dates=['Time'])
     
     st.markdown('#### Dataset:')
     st.write(df_print) 
@@ -30,7 +30,7 @@ def main():
     st.write(df.describe().T) 
     
     # missing value treatment
-    for i in ['SiteB', 'SiteE']:
+    for i in ['Node B', 'Node E']:
         df[i][df[i] == 0] = df[i].mean() 
     
     st.markdown("#### Test vs Prediction Plot:")
