@@ -1,3 +1,4 @@
 models/Bidirectional_LSTM.h5
 exp/
 __pycache__/
+notebooks/train.ipynb 
