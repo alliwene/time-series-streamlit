@@ -1,4 +1,4 @@
 models/Bidirectional_LSTM.h5
 exp/
 __pycache__/
-
+models/exp_LSTM.h5
